@@ -8,10 +8,17 @@ package computer;
  * @author George
  */
 public class Screen {
-    String screenMemory = "Display: ";
+    String screenMemory = "Total: ";
     
     public void display(String deAfisat){
         screenMemory += deAfisat;
         System.out.println(screenMemory);
+        //screenMemory.clear();
     }
+    
+    public void display(float rezultat) {
+        screenMemory += rezultat;
+        System.out.println(screenMemory);
+    }
+
 }

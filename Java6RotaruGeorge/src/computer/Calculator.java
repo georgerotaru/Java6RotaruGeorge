@@ -8,6 +8,10 @@ package computer;
  * @author George
  */
 public class Calculator {
+    float x, y, z;
+    //float y = 0;
+    //float z = 0;
+    String i;
     private Screen ecran;
 
     public Calculator() {
@@ -18,30 +22,34 @@ public class Calculator {
      * Methods adds 2 digits introduced by user from keyboard
      */
     public void add(){
-        
+        x = KeyboardInput.getNumber();
+        i = KeyboardInput.getOperator();
+        y = KeyboardInput.getNumber();
+        z = x + y;
+        ecran.display(z);
     }
     /**
      * Methods adds 2 digits introduced by user from keyboard
      */
     public void decrease(){
     
-}
+    }
     /**
      * Multiply 2 numbers introduced by the user
      */
-public void multiply(){
+    public void multiply(){
     
-}
-/**
- * Divide 2 numbers introduced by the user
- */
-public void divide(){
+    }
+    /**
+     * Divide 2 numbers introduced by the user
+     */
+    public void divide(){
     
-}
-/**
- * 
- */
-public void start(){
-    ecran.display("0");
+    }
+    /**
+     * Start the calculator and activate screen
+     */
+    public void start(){
+        ecran.display("");
 }
 }
