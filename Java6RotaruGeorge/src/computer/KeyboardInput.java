@@ -4,6 +4,8 @@
  */
 package computer;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -12,13 +14,6 @@ import java.util.Scanner;
  * @author George
  */
 public class KeyboardInput {
-    
-    /*public static boolean contains(String[] operatorList, String item) {
-        List<String> operators = Arrays.asList(operatorList);
-        return operators.contains(item);
-    }*/
-    
-    String[] defaultOperators = {"+", "-", "/", "*", "="};
     
     static float getNumber() {
         Scanner readNumber = new Scanner(System.in);
@@ -34,9 +29,24 @@ public class KeyboardInput {
         }
     }
     
+    
+    
     static String getOperator() {
         System.out.print("Input type of operation (+ - * / =): ");
         Scanner readOperator = new Scanner(System.in);
+        String[] defaultOperators = {"+", "-", "*", "/", "="};
+        String operatorToSearch = readOperator;
+        boolean found = false;
+        for (String element:defaultOperators) {
+            if ( element.equals(defaultOperators)) {
+                found = true;
+            }
+        }
+        if (found) {
+            break;
+        } else {
+        System.out.println("Wrong operator, please try again!");
+        }
         return readOperator.next();
     }
 }
