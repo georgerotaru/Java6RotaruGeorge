@@ -29,7 +29,7 @@ public class KeyboardInput {
         }
     }
     
-    
+    //http://javadevnotes.com/java-string-array-examples
     
     static String getOperator() {
         System.out.print("Input type of operation (+ - * / =): ");
