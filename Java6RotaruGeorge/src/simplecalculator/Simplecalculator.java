@@ -84,5 +84,5 @@ public class Simplecalculator {
             System.out.println("Sorry, you introduced wrong data. I quit :)");
             System.exit(0);
         }
-    }
+}
 }
