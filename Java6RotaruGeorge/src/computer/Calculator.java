@@ -3,16 +3,18 @@
  */
 package computer;
 
+import java.util.Scanner;
+
 /**
  * Calculator frame
  * @author George
  */
 public class Calculator {
-    float x, y, z;
+    int x, y, z;
     //float y = 0;
     //float z = 0;
-    String i;
-    private Screen ecran;
+    Scanner i;
+    private final Screen ecran;
 
     public Calculator() {
         ecran = new Screen();

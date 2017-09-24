@@ -15,12 +15,12 @@ import java.util.Scanner;
  */
 public class KeyboardInput {
     
-    static float getNumber() {
+    static int getNumber() {
         Scanner readNumber = new Scanner(System.in);
         while (true) {
             System.out.print("Input number: ");
             try {
-                return readNumber.nextFloat();
+                return readNumber.nextInt();
             }
             catch (java.util.InputMismatchException ime) {
                 readNumber.nextLine();
@@ -31,22 +31,23 @@ public class KeyboardInput {
     
     //http://javadevnotes.com/java-string-array-examples
     
-    static String getOperator() {
+    static Scanner getOperator() {
+        boolean found = false;
+        do {
         System.out.print("Input type of operation (+ - * / =): ");
         Scanner readOperator = new Scanner(System.in);
         String[] defaultOperators = {"+", "-", "*", "/", "="};
-        String operatorToSearch = readOperator;
-        boolean found = false;
+        Scanner operatorToSearch = readOperator;
+        //boolean found = false;
         for (String element:defaultOperators) {
-            if ( element.equals(defaultOperators)) {
+            if (element.equals(operatorToSearch)) {
                 found = true;
+                System.out.println("IUUPII");
+                return readOperator;
             }
         }
-        if (found) {
-            break;
-        } else {
-        System.out.println("Wrong operator, please try again!");
-        }
-        return readOperator.next();
+        } while (found = false);
+        //return readOperator.next();
+        return (null);
     }
 }
