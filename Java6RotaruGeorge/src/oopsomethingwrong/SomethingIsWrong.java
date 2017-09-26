@@ -1,6 +1,6 @@
 /*
  * SomethingIsWrong
- * The given program didn't had a ...
+ * Calculate an area of a specified rectangle
  */
 package oopsomethingwrong;
 
