@@ -10,10 +10,7 @@ import java.util.Scanner;
  * @author George
  */
 public class Calculator {
-    int x, y, z;
-    //float y = 0;
-    //float z = 0;
-    Scanner i;
+
     private final Screen ecran;
 
     public Calculator() {
@@ -24,11 +21,7 @@ public class Calculator {
      * Methods adds 2 digits introduced by user from keyboard
      */
     public void add(){
-        x = KeyboardInput.getNumber();
-        i = KeyboardInput.getOperator();
-        y = KeyboardInput.getNumber();
-        z = x + y;
-        ecran.display(z);
+
     }
     /**
      * Methods adds 2 digits introduced by user from keyboard
@@ -52,6 +45,6 @@ public class Calculator {
      * Start the calculator and activate screen
      */
     public void start(){
-        ecran.display("");
+        ecran.display("0");
 }
 }
