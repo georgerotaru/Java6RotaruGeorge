@@ -22,12 +22,17 @@ public class TestCalculator {
         computer.start();
         // test the add of 123 + 223
         computer.add();
+        // clear screen
+        computer.clear();
         // test 233 - 122
         computer.decrease();
+        computer.clear();
         // test 123 * 12
         computer.multiply();
+        computer.clear();
         // test 24 : 6
         computer.divide();
+        computer.clear();
     }
     
 }

@@ -11,13 +11,15 @@ package computer;
  */
 public class Button {
     
-private String buttonValue;
+private static String buttonValue;
+private static String totalValue;
 
 public Button() {
-    buttonValue = "";
+    totalValue = "";
 }
     public void emptyButton() {
         buttonValue = "";
+        totalValue = "";
     }
     public String getButtonValue() {
         return(buttonValue);
@@ -25,5 +27,10 @@ public Button() {
     
     public void setButtonValue(String pushButton) {
         buttonValue = pushButton;
+    }
+    
+    public static String getValue() {
+        totalValue += buttonValue;
+        return(totalValue);
     }
 }
