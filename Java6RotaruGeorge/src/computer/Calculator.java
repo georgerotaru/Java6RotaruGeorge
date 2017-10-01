@@ -6,157 +6,88 @@ package computer;
 import java.util.Scanner;
 
 /**
- * Calculator frame
- * @author George
+ *
+ * @author gheor
  */
 public class Calculator {
-
-    private final Screen ecran;
-    private final Button button;
-    private int firstNumber, secondNumber;
-    float total;
+    
+    private Screen ecran;
+    private Button[] butoane;
+    private Character markupsOfButtons[] = {'0','1','2','3','4','5','6','7','8','9','+','-','*','/','='};
+    private Processor procesor;
 
     public Calculator() {
         ecran = new Screen();
-        button = new Button();
+        procesor = new Processor();
+        butoane =  new Button[15];
+        int i = 0;
+        for(Character currentMarkup:markupsOfButtons){
+            Button newButton = new Button();
+            newButton.drawOnButton(currentMarkup);
+            butoane[i] = newButton;
+            i++;
+        }
     }
     
-    /**
-     * Start the calculator and activate screen
-     */
     public void start(){
-        ecran.display("0");
-    }
-    /**
-     * Method adds 2 digits introduced by user from keyboard
-     */
-    public void add(){
-        ecran.clrscr("");
-        button.setButtonValue("1");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("3");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
-
-        button.setButtonValue("+");
-        ecran.clrscr("");
-        button.emptyButton();
-        
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        secondNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        secondNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("3");
-        ecran.display(button.getButtonValue());
-        secondNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("=");
-        total = firstNumber + secondNumber;
-        ecran.clrscr("");
-        ecran.display(total);
-
+        ecran.display(0);
     }
     
-    /**
-     * Method clears screen
-     */
-    public void clear() {
-        button.setButtonValue("C");
-        button.emptyButton();
-        ecran.clrscr("");
-        ecran.display("0");
+    public void displayMessageOnScreen(String message){
+        ecran.displayMessage(message);
     }
-    /**
-     * Method adds 2 digits introduced by user from keyboard
-     */
-    public void decrease(){
-        ecran.clrscr("");
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("3");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
+    
+    public void pushButtonsForOperand(){
+        Scanner newScanner = new Scanner(System.in);
+        String readit = newScanner.nextLine();
+        Double operand = Double.valueOf(readit);
+        ecran.displayMessage("You introduced operand: ");
+        ecran.displayMessage(readit);
+        if(procesor.getPrimulOperand() == null)
+            procesor.setPrimulOperand(operand);
+        else
+            procesor.setAlDoileaOperand(operand); 
+    }
 
-        button.setButtonValue("-");
-        ecran.clrscr("");
-        button.emptyButton();
-        
-        button.setButtonValue("1");
-        ecran.display(button.getButtonValue());
-        secondNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        secondNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        secondNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("=");
-        total = firstNumber - secondNumber;
-        ecran.clrscr("");
-        ecran.display(total);
-       
+    public void pushButtonsForOperator(){
+        Scanner newScanner = new Scanner(System.in);
+        String readit = newScanner.nextLine();
+        Character operand = readit.charAt(0);
+        ecran.displayMessage("You introduced operand: ");
+        ecran.displayMessage(operand.toString());
+        procesor.setOperator(operand);
     }
-    /**
-     * Multiply 2 numbers introduced by the user
-     */
-    public void multiply(){
-        ecran.clrscr("");
-        button.setButtonValue("1");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("3");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
+    
+    public void pushButtonEqual(){
+        Double result = procesor.calculeaza();
+        ecran.displayMessage(result.toString());
+    }
+    
+    public Screen getEcran() {
+        return ecran;
+    }
 
-        button.setButtonValue("*");
-        ecran.clrscr("");
-        button.emptyButton();
-        
-        button.setButtonValue("1");
-        ecran.display(button.getButtonValue());
-        secondNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        secondNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("=");
-        total = firstNumber * secondNumber;
-        ecran.clrscr("");
-        ecran.display(total);
+    public void setEcran(Screen ecran) {
+        this.ecran = ecran;
     }
-    /**
-     * Divide 2 numbers introduced by the user
-     */
-    public void divide(){
-        ecran.clrscr("");
-        button.setButtonValue("2");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("4");
-        ecran.display(button.getButtonValue());
-        firstNumber = Integer.parseInt(Button.getValue());
 
-        button.setButtonValue("/");
-        ecran.clrscr("");
-        button.emptyButton();
-        
-        button.setButtonValue("6");
-        ecran.display(button.getButtonValue());
-        secondNumber = Integer.parseInt(Button.getValue());
-        button.setButtonValue("=");
-        total = firstNumber / secondNumber;
-        ecran.clrscr("");
-        ecran.display(total);
+    public Button[] getButoane() {
+        return butoane;
     }
+
+    public void setButoane(Button[] butoane) {
+        this.butoane = butoane;
+    }
+
+    public Processor getProcesor() {
+        return procesor;
+    }
+
+    public void setProcesor(Processor procesor) {
+        this.procesor = procesor;
+    }
+    
+    
+    
+    
 }

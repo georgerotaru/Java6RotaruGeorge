@@ -12,27 +12,29 @@ package computer;
  */
 public class TestCalculator {
 
+static Calculator calculator = new Calculator();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // create a Calculator instance
-        Calculator computer = new Calculator();
-        // start the Calculator
-        computer.start();
-        // test the add of 123 + 223
-        computer.add();
-        // clear screen
-        computer.clear();
-        // test 233 - 122
-        computer.decrease();
-        computer.clear();
-        // test 123 * 12
-        computer.multiply();
-        computer.clear();
-        // test 24 : 6
-        computer.divide();
-        computer.clear();
+        // run the computer
+        calculator.start();
+        // read first operand on a line (enter confirms the number is ready)
+        calculator.displayMessageOnScreen("Please insert your first operand:");
+        // read first operand
+        calculator.pushButtonsForOperand();
+        // read operator
+        calculator.displayMessageOnScreen("Please insert your first operator:");
+        // read operation
+        calculator.pushButtonsForOperator();
+        // read second operand on a line (enter confirms the number is ready)
+        calculator.displayMessageOnScreen("Please insert your second operand:");
+        // read second operand on a line (enter confirms the number is ready)
+        calculator.pushButtonsForOperand();
+        // read first operand on a line (enter confirms the number is ready)
+        calculator.displayMessageOnScreen("Please insert =:");
+        // please push =
+        calculator.pushButtonEqual();        
     }
     
 }

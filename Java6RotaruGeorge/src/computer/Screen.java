@@ -8,20 +8,42 @@ package computer;
  * @author George
  */
 public class Screen {
-    String screenMemory = "Display: ";
-    
-    public void display(String deAfisat){
-        screenMemory += deAfisat;
-        System.out.println(screenMemory);
-    }
-    
-    public void display(float rezultat) {
-        screenMemory += rezultat;
-        System.out.println(screenMemory);
-    }
-    
-    public void clrscr(String deAfisat) {
-        screenMemory = "Display: ";
+    private int valoareAfisata = 0;
+
+    /**
+     Method display specified parameter value
+     */
+        public void display(int valueToDisplay){
+            System.out.println(valueToDisplay);
+            valoareAfisata = valueToDisplay;
+        }
+    /**
+     Method display specified parameter value
+     */
+        public void clear(){
+            System.out.println(0);
+            valoareAfisata = 0;
+        }
+        /**
+     * Get the value of valoareAfisata
+     *
+     * @return the value of valoareAfisata
+     */
+    public int getValoareAfisata() {
+        return valoareAfisata;
     }
 
+    /**
+     * Set the value of valoareAfisata
+     *
+     * @param valoareAfisata new value of valoareAfisata
+     */
+    public void setValoareAfisata(int valoareAfisata) {
+        this.valoareAfisata = valoareAfisata;
+    }
+
+    public void displayMessage(String message){
+    
+        System.out.println(message);
+    }
 }

@@ -11,26 +11,13 @@ package computer;
  */
 public class Button {
     
-private static String buttonValue;
-private static String totalValue;
+public Character pushButton() {
+        return markup;
+    }
 
-public Button() {
-    totalValue = "";
-}
-    public void emptyButton() {
-        buttonValue = "";
-        totalValue = "";
+    public void drawOnButton(Character markup) {
+        this.markup = markup;
     }
-    public String getButtonValue() {
-        return(buttonValue);
-    }
-    
-    public void setButtonValue(String pushButton) {
-        buttonValue = pushButton;
-    }
-    
-    public static String getValue() {
-        totalValue += buttonValue;
-        return(totalValue);
-    }
+
+    private Character markup;
 }
