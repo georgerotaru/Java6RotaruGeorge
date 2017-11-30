@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testest;
+package definitions;
 
 /**
  *
  * @author George
  */
-public class NewTest {
+public class Figure {
+private static final String DEFINITION = "a plane figure ";    
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
+    public String getDefinition() {
+        return DEFINITION;
     }
-    
 }
