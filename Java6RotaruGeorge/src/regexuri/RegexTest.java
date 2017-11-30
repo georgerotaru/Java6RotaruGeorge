@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * With this class you can input text from keyboard and the program will try
+ * to find if you entered any Romanian personal identification numbers
  */
 package regexuri;
 
@@ -10,14 +9,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * This class uses regex to build a pattern and to test if it can be found
+ * in a given text
  * @author George
  */
 public class RegexTest {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // this sets the rules for searching within given text
         String regex = "\\b(1|2)[0-9]{2}(0)[1-9][0-2][0-9][0-4][0-9]{5}+\\b|"
