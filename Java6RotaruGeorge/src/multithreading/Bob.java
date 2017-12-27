@@ -21,7 +21,7 @@ private Television tv;
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         cleaning(vc);
         System.out.println("Bob is using the vacuum cleaner");
         watchingTv(tv, femeie);

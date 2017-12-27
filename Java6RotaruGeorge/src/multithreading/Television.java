@@ -18,14 +18,23 @@ private boolean isFavoriteShow = false;
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         System.out.println("TV is running");
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
+            isFavoriteShow = true;
+            receiving();
         } catch (InterruptedException ex) {
             Logger.getLogger(Television.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            isFavoriteShow = true;
-            System.out.println("Favourite show started");
+        }            
     }
+    
+    private void receiving(){
+        while(true){
+            if (isFavoriteShow == true){
+                System.out.println("Favourite show started.");                
+            break;
+            }
+        }
+    }    
  }

@@ -24,13 +24,17 @@ private Cigar tigara;
     }
 
     @Override
-    public void run() {
-        System.out.println("Marleen is sleeping");
+    public synchronized void run() {
+        sleeping();
+    }
+    
+    private void sleeping(){
         while(true){
-            System.out.print(""); // if no instructions before the if statement, it is never executed. WHY ??
-            if (isSleeping==false) {
-                System.out.println("Marleen is watching tv");
+            if(isSleeping == false){
+                System.out.println("Marleen is awake and watching her favourite show.");
                 break;
+            } else {
+                System.out.println("Marleen is sleeping.");
             }
         }
     }
