@@ -5,7 +5,7 @@
 package anonimousclasses;
 
 /**
- * Class prints to console using anonymous classes
+ * Class prints to console using anonymous classes 
  * @author George
  */
 public class HelloWorldAnonymousClasses {
