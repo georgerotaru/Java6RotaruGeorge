@@ -11,9 +11,16 @@
         <link rel="stylesheet" href="../eBookStore/css/eBooksStoreCSS.css">
         <meta http-equiv="Content-Type" content="text/html" charset=UTF-8"/>
         <meta name="eBookStore" author="George" content="A web application written in HTML and Java>"/>
-        <title>-eBook STORE-</title>
+        <title>-eBook STORE- Login</title>
     </head>
     <body>
-
+        <h1>Welcome to Electronic Books Store</h1>
+            <form>
+                <fieldset>
+                <input type="text" name="username" value="admin"><br>
+                <input type="password" name="password" value="admin"><br>
+                <input type="submit" value="Login">
+                </fieldset>></form>
     </body>
+    
 </html>
