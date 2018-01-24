@@ -109,3 +109,10 @@ select{
    outline-style: none;
    font-size: 12px;
 }
+.rolebutton{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border-width: thin;
+    outline: none;
+    pointer-events: none;
+}

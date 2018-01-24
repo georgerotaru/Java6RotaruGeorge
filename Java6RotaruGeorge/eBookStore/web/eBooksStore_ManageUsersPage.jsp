@@ -21,7 +21,7 @@
                 <th width="4%">select</th>
                 <th width="32%">USERNAME</th>
                 <th width="32%">PASSWORD</th>
-                <th width="32%">ROLE</th>
+                <th width="32%">ROLE<button type"button" name="user_role" class="rolebutton">Admin</th>
             </tr>           
         </table>
         <table class="tablewithborders" width="100%">
