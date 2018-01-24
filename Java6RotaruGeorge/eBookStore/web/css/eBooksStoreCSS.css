@@ -64,8 +64,9 @@ table{
 }
 td{
     text-align: left;
-    vertical-align: top;
+    vertical-align: top;  
 }
+
 td.tdl td {
     text-align: left;
     vertical-align: top;

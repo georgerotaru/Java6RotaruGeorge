@@ -1,0 +1,111 @@
+/*
+Copyright gheorgheaurelpacurar
+*/
+/* 
+    Created on : Jan 24, 2018, 12:02:08 PM
+    Author     : George
+*/
+
+body{
+    background-image: url("../img/eBooksStoreBackground.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    font-family: "Veranda";
+    font-size: 14px;
+    color: whitesmoke;
+    text-align: center;
+}
+table{
+    background-color: whitesmoke;
+    border-spacing: 0 0px;
+    border-collapse: collapse;
+}
+td{
+    border-collapse: collapse;
+    text-align: center;
+    color: black;
+    border-color: darkgrey;
+    border-style: outset;
+    border-width: 1px;
+    font-size: 16px;
+}
+th{
+    border-collapse: collapse;
+    text-align: center;
+    color: black;
+    border-color: darkgrey;
+    border-style: outset;
+    border-width: 1px;
+    font-size: 16px;
+}
+.tablecenteredwithroundborder{
+    margin-left:auto; 
+    margin-right:auto;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: none;
+    border-color: darkgray;
+}
+#noborder td{
+    text-align: left;
+    border-style: none;
+}
+.tableformenu{
+    background: linear-gradient(180deg, #898989 50%, #787878 50%);
+}
+.inputbeigefield{
+    background-color: beige;
+    border-width: 1px;
+    width: 65%;
+    font-size: 14px;
+}
+.button{
+    border-radius: 5px;
+    border-width: 1px;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 5px darkgray;
+    font-size: 14px;
+}
+.button:hover{
+    background-color: aliceblue;
+    border-color: white;
+}
+.button:active{
+    outline: none;
+}
+.menubutton{
+    border-style: outset;
+    border-width: 2px;
+    background-color: transparent;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: #828282;
+    border-bottom-color: #828282;
+    width: 100%;
+    height: 40px;
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: bold;
+}
+.menubutton:hover{
+    border-style: inset;
+    border-color: white;
+    border-width: medium;
+}
+.menubutton:active{
+    outline: none;
+    border-color: black;
+    border-width: medium;
+}
+select{
+   background: transparent;
+   border-radius: 5px;
+   width: 100px;
+   padding: 0px;
+   font-size: 12px;
+   line-height: 1;
+   height: 23px;
+   outline-style: none;
+   font-size: 12px;
+}

@@ -8,19 +8,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="../eBookStore/css/eBooksStoreCSS.css">
         <meta http-equiv="Content-Type" content="text/html" charset=UTF-8"/>
         <meta name="eBookStore" author="George" content="A web application written in HTML and Java>"/>
         <title>-eBook STORE- Login</title>
+        <link rel="stylesheet" type="text/css" href="../eBookStore/css/eBookStore.css">
     </head>
     <body>
         <h1>Welcome to Electronic Books Store</h1>
+        <br>
+        <table class="tablecenteredwithroundborder" id="noborder" width="20%">      
             <form>
-                <fieldset>
-                <input type="text" name="username" value="admin"><br>
-                <input type="password" name="password" value="admin"><br>
-                <input type="submit" value="Login">
-                </fieldset>></form>
+                <tr><td style="padding-left: 35%"><input type="text" class="inputbeigefield" name="username_field" value="admin"></td></tr>
+                <tr><td style="padding-left: 35%"><input type="password" class="inputbeigefield"  name="password_field" value="admin"></td></tr>
+                <tr><td style="padding-left: 35%"><input type="button" class="button" name="submit_authentification"  onClick="location.href='./eBooksStore_MainPage.jsp'" value="Login"></td></tr>
+            </form>
+        </table>
     </body>
     
 </html>
