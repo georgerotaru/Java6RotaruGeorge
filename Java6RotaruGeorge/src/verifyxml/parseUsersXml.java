@@ -96,7 +96,7 @@ public class parseUsersXml {
             } else if (validUserAdmin) {
                 System.out.println("*************************************");
                 System.out.println("User "+validUser+"(admin) log in successful!");
-                System.out.println("\nHere is a list of all users:");;
+                System.out.println("\nHere is a list of all users:");
                 for (Map.Entry<String, List<String>> entry : map.entrySet()) {
                     System.out.println("username: "+entry.getKey());
                     System.out.println("\tCNP: "+entry.getValue().get(0));
