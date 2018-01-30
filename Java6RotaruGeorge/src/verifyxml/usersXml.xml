@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<users
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='usersXmlSchema.xsd'>
+    <user>
+        <userID>admin</userID>
+        <passwd>adminadmin</passwd>
+        <CNP>1111111111111</CNP>
+        <isAdmin>true</isAdmin>
+    </user>
+    <user>
+        <userID>coco</userID>
+        <passwd>cocobango</passwd>
+        <CNP>2222222222222</CNP>
+        <isAdmin>false</isAdmin>
+    </user>
+    <user>
+        <userID>george</userID>
+        <passwd>george</passwd>
+        <CNP>3333333333333</CNP>
+        <isAdmin>true</isAdmin>
+    </user>
+    <user>
+        <userID>gheorghe</userID>
+        <passwd>gheorghe</passwd>
+        <CNP>4444444444444</CNP>
+        <isAdmin>false</isAdmin>
+    </user>
+    <user>
+        <userID>rotaru</userID>
+        <passwd>rotaru</passwd>
+        <CNP>5555555555555</CNP>
+        <isAdmin>false</isAdmin>
+    </user>
+    <user>
+        <userID>pacurar</userID>
+        <passwd>pacurar</passwd>
+        <CNP>6666666666666</CNP>
+        <isAdmin>true</isAdmin>
+    </user>                
+</users>
