@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html" charset=UTF-8"/>
         <meta name="eBookStore" author="George" content="A web application written in HTML and Java>"/>
         <title>-eBook STORE- Manage accounts</title>
-        <link rel="stylesheet" type="text/css" href="../eBookStore/css/eBookStore.css">
+        <link rel="stylesheet" type="text/css" href="./css/eBookStore.css">
     </head>
     <body>
         <h1><br></h1>
