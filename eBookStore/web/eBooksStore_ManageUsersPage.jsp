@@ -46,7 +46,7 @@
                 <tr><td colspan="4" style="padding-left: 35%">
                         <select>
                             <option value="admin">admin</option>
-                            <option value="coco">coco</option>
+                            <option value="user">normal user</option>
                         </select>
                     </td></tr>
                 <tr>
