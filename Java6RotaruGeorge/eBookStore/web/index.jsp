@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="../eBookStore/css/eBooksStoreCSS.css">
+        <link rel="stylesheet" href="../eBookStore/css/eBookStore.css">
         <meta http-equiv="Content-Type" content="text/html" charset=UTF-8"/>
         <meta name="eBookStore" author="George" content="A web application written in HTML and Java>"/>
         <title>-eBook STORE-</title>
