@@ -51,6 +51,14 @@ th{
     text-align: left;
     border-style: none;
 }
+#logincell td{
+    text-align: center;
+    background-color: darkslategray;
+    color: yellow;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 22px;
+}
 .tableformenu{
     background: linear-gradient(180deg, #898989 50%, #787878 50%);
 }
@@ -58,7 +66,7 @@ th{
     background-color: beige;
     border-width: 1px;
     width: 65%;
-    font-size: 14px;
+    font-size: 12px;
 }
 .button{
     border-radius: 5px;

@@ -1,22 +1,20 @@
 <%-- 
-    Document   : index
-    Created on : Jan 22, 2018, 8:56:40 PM
+    Document   : loginerr
+    Created on : Feb 1, 2018, 10:43:50 PM
     Author     : George
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html" charset=UTF-8"/>
         <meta name="eBookStore" author="George" content="A web application written in HTML and Java>"/>
-        <title>Welcome to eBook STORE - Login page</title>
+        <title>Uhh-Ohh...</title>
         <link rel="stylesheet" type="text/css" href="./css/eBookStore.css">
     </head>
     <body>
-        <c:set var="activePage" value="index" scope="session"></c:set><%--don't know what id does--%>
-        <h1>Welcome to Electronic Books Store</h1>
+        <h1 style="text-shadow: 1px 1px #ff0000">Uhh - Ohh ! Wrong username or password.. please try again!</h1>
         <br>
         <table class="tablecenteredwithroundborder" id="noborder" width="30%">      
             <form action="login" method="POST">
