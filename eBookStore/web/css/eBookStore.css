@@ -59,9 +59,6 @@ th{
     border-top-right-radius: 5px;
     font-size: 22px;
 }
-.tableformenu{
-    background: linear-gradient(180deg, #898989 50%, #787878 50%);
-}
 .inputbeigefield{
     background-color: beige;
     border-width: 1px;
@@ -78,33 +75,7 @@ th{
 .button:hover{
     background-color: aliceblue;
     border-color: white;
-}
-.button:active{
-    outline: none;
-}
-.menubutton{
-    border-style: outset;
-    border-width: 2px;
-    background-color: transparent;
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: #828282;
-    border-bottom-color: #828282;
-    width: 100%;
-    height: 40px;
-    color: whitesmoke;
-    font-size: 18px;
-    font-weight: bold;
-}
-.menubutton:hover{
-    border-style: inset;
-    border-color: white;
-    border-width: medium;
-}
-.menubutton:active{
-    outline: none;
-    border-color: black;
-    border-width: medium;
+    
 }
 select{
    background: transparent;
@@ -123,4 +94,9 @@ select{
     border-width: thin;
     outline: none;
     pointer-events: none;
+}
+.errorpass {
+    color: #FF0000;
+    display: inline;
+    font-size: 12px;
 }

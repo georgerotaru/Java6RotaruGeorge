@@ -4,9 +4,33 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>servlets.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Chpasswd</servlet-name>
+        <servlet-class>servlets.Chpasswd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminUserRoles</servlet-name>
+        <servlet-class>servlets.AdminUserRoles</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminUsers</servlet-name>
+        <servlet-class>servlets.AdminUsers</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Chpasswd</servlet-name>
+        <url-pattern>/chpasswd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUserRoles</servlet-name>
+        <url-pattern>/changeUserRoles</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUsers</servlet-name>
+        <url-pattern>/adminUsers</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

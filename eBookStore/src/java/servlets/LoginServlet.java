@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.Index;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  * java web application. Session variable "validUser" is used to keep the value
  * of an authenticated user. The value should be true. If the variable has value false or 
  * not exist in session the user is unauthorized.
+ * Other session variables: "actualUser" keeps the username of the valid logged in user,
+ * "isAdmin" stores true or false (if the user has administrator role or not), 
  */
 public class LoginServlet extends HttpServlet {
 
@@ -44,8 +45,8 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
         //get username and password from user input in login form
-        String username = request.getParameter("username_field").toLowerCase();
-        String password = request.getParameter("password_field");
+        String username = request.getParameter("authpage_username").toLowerCase();
+        String password = request.getParameter("authpage_password");
         //set connection parameters to DB
         Connection connection = null;
         Statement statement = null;
@@ -66,42 +67,42 @@ public class LoginServlet extends HttpServlet {
                 //save as actualUser variable username
                 request.getSession().setAttribute("actualUser", username);
                 //save as actualUserRole if it has administrator privileges or not
-                request.getSession().setAttribute("isAdmin", resultSet.getString("IS_ADMIN"));
+                request.getSession().setAttribute("isAdmin", resultSet.getBoolean("IS_ADMIN"));
                 //create a variable to know that the user is authentificated
                 request.getSession().setAttribute("validUser", true);
+                //request.getSession().setAttribute("username", username);
                 //delegate to jsp
                 request.getRequestDispatcher("./main.jsp").forward(request, response);
             } else{
                 //set validation attribute to false to be sure security will not be broken
                 request.getSession().setAttribute("validUser", false);
+                request.setAttribute("loginError", true);
                 //there is no user recorded with theese username and password so we'll stay on this page
-                //request.getRequestDispatcher("./index.jsp").forward(request, response);
                 //there is no user record with theese username and password so we redirect to err page
-                response.sendRedirect("./loginerr.jsp");
+                request.getRequestDispatcher("./index.jsp").forward(request, response);
             }
-        } catch(ClassNotFoundException | SQLException ex){
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
-            throw new SQLException();            
+        } catch(SQLException ex){
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);           
         } finally{
             if (resultSet != null){
                 try{
                     resultSet.close();
-                } catch (Exception ex){
-                    Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex){
+                    Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (statement != null){
                 try{
                     statement.close();
-                } catch (Exception ex){
-                    Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex){
+                    Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }	
             if (connection != null){
                 try{
                     connection.close();
-                } catch(Exception ex){
-                    Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+                } catch(SQLException ex){
+                    Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -115,15 +116,13 @@ public class LoginServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * Won't be used for security reasons
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //processRequest(request, response);
+
     }
 
     /**
@@ -133,25 +132,26 @@ public class LoginServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * For security purposes, this method will be used to authenticate a user
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+            request.removeAttribute("loginError");
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     /**
-     * Returns a short description of the servlet.
+     * This servlet computes authentication and authorization process
      *
      * @return a String containing servlet description
      */
     @Override
     public String getServletInfo() {
-        return "This servlet computes authentication and autorisation process";
+        return "This servlet computes authentication and authorization process";
     }// </editor-fold>
-
 }
