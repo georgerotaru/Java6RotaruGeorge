@@ -18,7 +18,7 @@
                             <c:when test="${isAdmin == true}">
                                 <li><a href="/ebookstore/manage/adminUsers.jsp">Users</a></li>
                                 <li><a href="/ebookstore/manage/adminUserRoles.jsp">User roles</a></li>
-                                <li><a href="/ebookstore/manage/adminEBooks.jsp">eBooks</a></li>
+                                <li><a href="/ebookstore/orders/eBooks.jsp">eBooks</a></li>
                             </c:when>
                         </c:choose>                              
                     </ul>
@@ -26,7 +26,7 @@
             </c:when>
         </c:choose>        
         <c:choose>
-            <c:when test="${isAdmin == false|| isAdmin == true}">
+            <c:when test="${isAdmin == false || isAdmin == true}">
                 <li><a href="#"><b>Orders</b></a>
                     <ul>
                         <li><a href="/ebookstore/orders/eBooks.jsp">eBooks list</a></li>

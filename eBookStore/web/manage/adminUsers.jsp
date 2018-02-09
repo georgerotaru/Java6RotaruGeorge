@@ -58,7 +58,7 @@ function toggleNewUser() {
                     <tr><td colspan="3" style="text-align: center"><div class="errorpass"><b>${adminuserpg_message}</b></div></td></tr>
                         <%--create fields to input user information--%>
                     <tr><td style="text-align: right; padding-right: 5px">username</td><td colspan="2" style="text-align: left"><input type="text" class="inputbeigefield" name="adminuserspg_username" style="font-size: 14px"></td></tr>
-                    <tr style="display: none" id="hideCNP"><td style="text-align: right; padding-right: 5px">CNP</td><td colspan="2" style="text-align: left"><input type="text" class="inputbeigefield" name="adminuserspg_cnp" style="font-size: 14px"></td></tr>
+                    <tr style="display: none" id="hideCNP"><td style="text-align: right; padding-right: 5px">CNP</td><td colspan="2" style="text-align: left"><input type="number" class="inputbeigefield" name="adminuserspg_cnp" style="font-size: 14px"></td></tr>
                     <tr style="display: none" id="hidePassword"><td style="text-align: right; padding-right: 5px">password</td><td colspan="2" style="text-align: left"><input type="password" class="inputbeigefield" name="adminuserspg_pass" style="font-size: 14px"></td></tr>
                     <tr style="display: none" id="hideRole"><td style="text-align: right; padding-right: 5px">user role</td><td colspan="2" style="text-align: left"><select name="adminuserspg_role">
                                                                                                                                                                         <option value="true">admin</option>

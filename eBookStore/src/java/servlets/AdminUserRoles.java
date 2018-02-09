@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Document : AdminUserRoles.java
+ * Author : George
+ * Copyright : George
  */
 package servlets;
 
@@ -21,14 +21,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * This servlet class implements changes made to user role in eBookStore java web
+ * application (administrator or simple user).
  * @author George
  */
 public class AdminUserRoles extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * methods. Connects to JDBC and changes user's role, according to specifications.
      *
      * @param request servlet request
      * @param response servlet response
@@ -38,7 +39,7 @@ public class AdminUserRoles extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//set connection parameters to DB
+    //set connection parameters to DB
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -48,27 +49,32 @@ public class AdminUserRoles extends HttpServlet {
         String sqlUrl = "jdbc:derby://localhost:1527/EBOOKSTORE;create=true";
         String driver = "org.apache.derby.jdbc.ClientDriver";
         RequestDispatcher dispatcher = request.getRequestDispatcher("./manage/adminUserRoles.jsp");
-        //try to create a connection to DB and check if user exists
+        //to do if Update button pushed
         if (request.getParameter("adminuserrolepg_update")!=null){
             try{
+                //connect to DB
                 Class driverClass = Class.forName(driver);
                 connection = DriverManager.getConnection(sqlUrl, sqlUser, sqlPasswd);
+                //get values from selected checkboxes in web page form
                 String[] selectedCheckboxes = request.getParameterValues("adminuserrolepg__checkbox");
+                //get user choice for new user role
                 Boolean newrole = Boolean.parseBoolean(request.getParameter("adminuserrolepg_role"));
+                //to do if new user role is administrator
                 if (newrole) {
                     connection.setAutoCommit(false);
                     for(String parseUsers : selectedCheckboxes){
-                        // realize update of all selected rows
+                        //update all selected rows
                         String myDB = "UPDATE USERS SET IS_ADMIN = ? WHERE USERNAME = ?";
                         pstmnt = connection.prepareStatement(myDB);
                         pstmnt.setBoolean(1, true);
                         pstmnt.setString(2, parseUsers);
                         boolean execute = pstmnt.execute();
                     }
+                //to do if new user role is a simple user
                 } else {
                     connection.setAutoCommit(false);
                     for(String parseUsers : selectedCheckboxes){
-                        // realize update of all selected rows
+                        //update all selected rows
                         String myDB = "UPDATE USERS SET IS_ADMIN = ? WHERE USERNAME = ?";
                         pstmnt = connection.prepareStatement(myDB);
                         pstmnt.setBoolean(1, false);
@@ -76,12 +82,9 @@ public class AdminUserRoles extends HttpServlet {
                         boolean execute = pstmnt.execute();   
                     }
                 }
+                //commit changes to JDBC
                 connection.commit();
                 connection.setAutoCommit(true);
-                /*statement = connection.createStatement();
-                String query = "SELECT IS_ADMIN FROM USERS WHERE USERNAME='"+request.getParameter("actualUser")+"'";
-                resultSet = statement.executeQuery(query);
-                request.getSession().setAttribute("isAdmin", resultSet.getBoolean("IS_ADMIN"));*/
             } catch(SQLException | ClassNotFoundException ex){
                 Logger.getLogger(AdminUserRoles.class.getName()).log(Level.SEVERE, null, ex);           
             } finally{
@@ -121,7 +124,7 @@ public class AdminUserRoles extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Won't be used for security reasons
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -135,7 +138,8 @@ public class AdminUserRoles extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * For security purposes, this method will be invoked to make changes in user's role
+     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -148,13 +152,13 @@ public class AdminUserRoles extends HttpServlet {
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Short servlet description
      *
      * @return a String containing servlet description
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "This servlet computes changes to user's role";
     }// </editor-fold>
 
 }

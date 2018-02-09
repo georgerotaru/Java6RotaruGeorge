@@ -1,20 +1,9 @@
-INSERT INTO AUTHORS VALUES ('5061756612048', 'Paula', 'Hawkins');
+INSERT INTO AUTHORS VALUES ('4656666726579', 'Jeffrey', 'Young');
+INSERT INTO AUTHORS VALUES ('4616657420532', 'Janet', 'Klosko');
 
-INSERT INTO EBOOKS VALUES ('978-606-719-419-7', 'Fata din tren', '#1 New York Times Bestseller\nBestseller absolut in Marea Britanie
-Tu nu o cunosti.
-Dar ea te cunoaste.
-Peste 1,8 milioane de exemplare vandute in doar patru luni, in Statele Unite.', 'ePub', 408, 'Fantasy', 20.99);
-INSERT INTO EBOOKS VALUES ('978-606-719-418-0', 'Fata din tren', '#1 New York Times Bestseller
-Bestseller absolut in Marea Britanie
-Tu nu o cunosti.
-Dar ea te cunoaste.
-Peste 1,8 milioane de exemplare vandute in doar patru luni, in Statele Unite.', 'pdf', 408, 'Fantasy', 19);
+INSERT INTO EBOOKS VALUES ('978-606-40-0212-9', 'Cum s?-?i reinventezi via?a', '?i se întâmpl? adesori s? pui nevoile celorlal?i mai presus de ale tale? Te panichezi când persoana iubit? te amenin?? c? te p?r?se?te? Te temi în mod exagerat de boli ?i de e?ecuri financiare? E?ti ve?nic nemul?umit, în ciuda reu?itelor personale ?i profesionale?', 'ePub', 472, 'other', 24.99);
 
-INSERT INTO EBOOK_AUTHORS(ISBN, CNP) VALUES ('978-606-719-419-7', '5061756612048');
-INSERT INTO EBOOK_AUTHORS(ISBN, CNP) VALUES ('978-606-719-418-0', '5061756612048');
+INSERT INTO EBOOK_AUTHORS(ISBN, CNP) VALUES ('978-606-40-0212-9', '4656666726579');
+INSERT INTO EBOOK_AUTHORS(ISBN, CNP) VALUES ('978-606-40-0212-9', '4616657420532');
 
-INSERT INTO USERS VALUES ('6164669669737', 'admin', '1234', true);
-INSERT INTO USERS VALUES ('6765672676572', 'georger', '1234', false);
-
-INSERT INTO EBOOK_RATINGS(RATING, CNP, ISBN) VALUES ('*****', '6164669669737', '978-606-719-418-0');
-INSERT INTO EBOOK_RATINGS(RATING, CNP, ISBN) VALUES ('****', '6765672676572', '978-606-719-418-0');
+INSERT INTO EBOOK_RATINGS(RATING, CNP, ISBN) VALUES ('***', 'pacurar', '978-606-40-0212-9');

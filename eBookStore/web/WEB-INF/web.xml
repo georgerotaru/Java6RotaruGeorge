@@ -16,6 +16,14 @@
         <servlet-name>AdminUsers</servlet-name>
         <servlet-class>servlets.AdminUsers</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EBooksAdministration</servlet-name>
+        <servlet-class>servlets.EBooksAdministration</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RateEBook</servlet-name>
+        <servlet-class>servlets.RateEBook</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>AdminUsers</servlet-name>
         <url-pattern>/adminUsers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EBooksAdministration</servlet-name>
+        <url-pattern>/ebooks</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RateEBook</servlet-name>
+        <url-pattern>/ratebook</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

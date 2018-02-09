@@ -19,20 +19,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author George
- * 
  * This servlet class implements authentication and authorization process for eBooksStore
- * java web application. Session variable "validUser" is used to keep the value
+ * java web application. Session variable "validUser" (true/false) is used to keep the value
  * of an authenticated user. The value should be true. If the variable has value false or 
- * not exist in session the user is unauthorized.
+ * it does not exist in session, the user is unauthorized.
  * Other session variables: "actualUser" keeps the username of the valid logged in user,
- * "isAdmin" stores true or false (if the user has administrator role or not), 
+ * "actualCnp" keeps the cnp of the current user, "isAdmin" (true/false) is used to 
+ * check if logged in user has administrator role and "loginError" (true/false) checks 
+ * to see if valid credentials are inputed in login screen.
+ * 
+ * @author George
  */
 public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
+     * Connects to JDBC and tests if login credentials are valid 
      *
      * @param request servlet request
      * @param response servlet response
@@ -60,12 +63,14 @@ public class LoginServlet extends HttpServlet {
             Class driverClass = Class.forName(driver);
             connection = DriverManager.getConnection(sqlUrl, sqlUser, sqlPasswd);
             statement = connection.createStatement();
-            String query = "SELECT USERNAME, PASSWORD, IS_ADMIN FROM USERS WHERE USERNAME='"+username+"' AND PASSWORD='"+password+"'";
+            String query = "SELECT * FROM USERS WHERE USERNAME='"+username+"' AND PASSWORD='"+password+"'";
             resultSet = statement.executeQuery(query);
             Boolean resultSetHasRows = resultSet.next();
             if (resultSetHasRows){
                 //save as actualUser variable username
                 request.getSession().setAttribute("actualUser", username);
+                //save user CNP in variable actualCnp
+                request.getSession().setAttribute("actualCnp", resultSet.getString("CNP"));
                 //save as actualUserRole if it has administrator privileges or not
                 request.getSession().setAttribute("isAdmin", resultSet.getBoolean("IS_ADMIN"));
                 //create a variable to know that the user is authentificated
@@ -76,9 +81,9 @@ public class LoginServlet extends HttpServlet {
             } else{
                 //set validation attribute to false to be sure security will not be broken
                 request.getSession().setAttribute("validUser", false);
+                //establish that bad credentials were inputed
                 request.setAttribute("loginError", true);
                 //there is no user recorded with theese username and password so we'll stay on this page
-                //there is no user record with theese username and password so we redirect to err page
                 request.getRequestDispatcher("./index.jsp").forward(request, response);
             }
         } catch(SQLException ex){
@@ -111,12 +116,12 @@ public class LoginServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
+     * Won't be used for security reasons
      *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * Won't be used for security reasons
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -127,12 +132,12 @@ public class LoginServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * For security purposes, this method will be invoked in login form to authenticate a user
+     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * For security purposes, this method will be used to authenticate a user
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -146,8 +151,8 @@ public class LoginServlet extends HttpServlet {
     }
 
     /**
-     * This servlet computes authentication and authorization process
-     *
+     * Short servlet description
+     * 
      * @return a String containing servlet description
      */
     @Override
