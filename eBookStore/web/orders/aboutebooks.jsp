@@ -38,7 +38,7 @@ function goBack() {
         </sql:query>
         <%--query JDBC for ebook rating--%>
         <sql:query  dataSource="${myDB}" var="ebookrating">
-            SELECT * FROM RATINGS
+            SELECT RATING FROM RATINGS
         </sql:query>
         <%--go back to previous page button--%>
         <button class="button" onclick="goBack()">go Back</button>
@@ -94,20 +94,22 @@ function goBack() {
                 <tr style="height: 30px"><td style="text-align: center">PRICE</td><td>${ebookrow.PRICE}</td></tr>
                 <tr style="height: 30px"><td style="text-align: center">RATE EBOOK</td>
                     <%--test and diplay if current user rated current ebook--%>
-                
                     <td>
+                        <%--create a form to pass rating values--%>
                         <form action="${pageContext.request.contextPath}/ratebook"  method="GET">
-                         <c:choose>
+                        <%--pass value to servlet (if needed)--%>
+                        <input type="hidden" name="useIsbn" value="${ebookIsbn}"/>
+                        <c:choose>
                             <c:when test="${rated == false}">
                                 <select name="aboutebookspg_rate">
                                     <c:forEach var="ebookratingrow" items="${ebookrating.rows}">
-                                        <option value="${ebookratingrow.VALUE}"><c:out value="${ebookratingrow.RATING}"/></option>
+                                        <option value="${ebookratingrow.RATING}"><c:out value="${ebookratingrow.RATING}"/></option>
                                     </c:forEach>
                                         <input type="submit" value="&#10004;" style="border-style: none; background-color: inherit">
                                 </select>
                             </c:when>
                             <c:otherwise>
-                                You have already rated this eBook. Thank you!
+                                eBook rated. Thank you!
                             </c:otherwise>
                         </c:choose>
                         </form>

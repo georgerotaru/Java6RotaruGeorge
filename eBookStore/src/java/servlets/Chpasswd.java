@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Document : AdminUsers.java
+ * Author : George
+ * Copyright : George
  */
 package servlets;
 
@@ -21,14 +21,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * This servlet class implements password update for current user logged in eBookStore 
+ * java web application.
  * @author George
  */
 public class Chpasswd extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * methods. Connects to JDBC and updates current user password if old one
+     * is correctly inputed and the new one is inputed twice the same
      *
      * @param request servlet request
      * @param response servlet response
@@ -59,18 +61,23 @@ public class Chpasswd extends HttpServlet {
             Class driverClass = Class.forName(driver);
             connection = DriverManager.getConnection(sqlUrl, sqlUser, sqlPasswd);
             statement = connection.createStatement();
+            //find username and password combination in DB
             String query = "SELECT USERNAME, PASSWORD FROM USERS WHERE USERNAME='"+username+"' AND PASSWORD='"+oldPass+"'";
             resultSet = statement.executeQuery(query);
             Boolean resultSetHasRows = resultSet.next();
+            //to do if not found
             if (!resultSetHasRows) {
                 request.setAttribute("errorOldPasswd", "Invalid password!");
                 dispatcher.forward(request, response);
+            //to do if new passwords not matching
             } else if (resultSetHasRows && !newPass1.equals(newPass2)){
                 request.setAttribute("errorNewPasswd", "No match!");
                 dispatcher.forward(request, response);
+            //to do if new password empty
             } else if (resultSetHasRows && newPass1.equals(newPass2) && newPass1.equals("")){
                 request.setAttribute("errorNewPasswd", "No entry!");
-                dispatcher.forward(request, response);   
+                dispatcher.forward(request, response);
+            //update password and return to main page
             } else if (resultSetHasRows && newPass1.equals(newPass2)){
                 query = "UPDATE USERS SET PASSWORD=? WHERE USERNAME=?";
                 pstmnt = connection.prepareStatement(query);
@@ -118,7 +125,8 @@ public class Chpasswd extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Won't be used for security reasons
+     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -133,7 +141,8 @@ public class Chpasswd extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * For security purposes, this method will be invoked to change user password
+     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -143,13 +152,10 @@ public class Chpasswd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        request.removeAttribute("errorOldPasswd");
-        request.removeAttribute("errorNewPasswd");
-        request.removeAttribute("passwdChange");
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Short servlet description
      *
      * @return a String containing servlet description
      */

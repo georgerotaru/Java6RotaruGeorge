@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * This servlet class implements the use of ordering, inserting, modifying, and updating
+ * This servlet class implements the use of ordering, inserting, modifying and updating
  * eBooks from eBooksStore java web application.
  * @author George
  */
