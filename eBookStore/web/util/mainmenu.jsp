@@ -33,7 +33,7 @@
                         <li><a href="/ebookstore/orders/orderHistory.jsp">My orders</a></li>
                         <c:choose>
                             <c:when test="${isAdmin == true}">
-                                <li><a href="/ebookstore/orders/adminEBooksInventory.jsp">Inventory</a></li>
+                                <li><a href="${pageContext.request.contextPath}/inventory">Inventory</a></li>
                             </c:when>
                         </c:choose>
                     </ul>

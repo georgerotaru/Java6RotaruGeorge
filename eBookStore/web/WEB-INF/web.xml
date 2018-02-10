@@ -24,6 +24,10 @@
         <servlet-name>RateEBook</servlet-name>
         <servlet-class>servlets.RateEBook</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EBookInventory</servlet-name>
+        <servlet-class>servlets.EBookInventory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>RateEBook</servlet-name>
         <url-pattern>/ratebook</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EBookInventory</servlet-name>
+        <url-pattern>/inventory</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
