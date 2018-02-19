@@ -6,7 +6,7 @@
 
 <%@ include file="./util/header.jsp" %>
 <c:set var="activePage" value="index" scope="session"></c:set><%--don't know what id does--%>
-<h1>Welcome to Electronic Books Store</h1>
+<h1>Welcome to eBook Web App</h1>
 <br>
 <table class="tablecenteredwithroundborder" id="noborder" width="30%">      
     <form action="${pageContext.request.contextPath}/login" method="POST">
